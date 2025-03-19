@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>TODO List <a style="float: right" href="{% url 'todo_app:task_create' %}">Create</a></h1>
+<ul>
+    {% for task in num_tasks %}
+        <li>
+            {{ task.content }} - <strong>{% if task.done_not_done %} Done {% else %} Not done {% endif %}</strong>
+            <p>Created at: {{ task.datetime|date:"Y-m-d H:i" }}</p>
+            <p>Deadline: {{ task.deadline|date:"Y-m-d H:i" }}</p>
+            <p>Tags:
+            {% for tag in task.tags.all %}
+              {{ tag.name }}
+            {% endfor %}</p>
+        <p><a href="{% url 'todo_app:task_update' task.id%}">Update</a></p>
+          <p><a href="{% url 'todo_app:task_delete' task.id%}">Delete</a></p>
+
+        </li>
+      <hr>
+    {% empty %}
+        <li><em>Завдань поки що немає.</em></li>
+    {% endfor %}
+</ul>
+{% endblock %}
