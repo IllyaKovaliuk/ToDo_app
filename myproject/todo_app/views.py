@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, HttpRequest, Http404
 from django.urls import reverse_lazy
 from django.views import generic
@@ -39,3 +39,11 @@ class TaskDeleteView(generic.DeleteView):
     model = Task
     success_url = reverse_lazy('todo_app:index')
     template_name = 'todo_app/task_delete.html'
+
+
+def TaskSwithcher(request: HttpRequest, task_id: int) -> HttpResponse:
+    task = get_object_or_404(Task, pk=task_id)
+    task.done_not_done = not task.done_not_done
+    task.save()
+    return redirect('todo_app:index')
+
