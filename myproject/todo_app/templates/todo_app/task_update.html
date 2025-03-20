@@ -3,7 +3,7 @@
 
 {% block content %}
   <h1>Here you can update your task!</h1>
-    <form action="", method="post" novalidate>
+    <form action="" method="post" novalidate>
       {% csrf_token %}
       {{ form|crispy }}
       <input type="submit" value="Update" class="btn btn-primary">

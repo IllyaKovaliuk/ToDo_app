@@ -47,3 +47,22 @@ def TaskSwithcher(request: HttpRequest, task_id: int) -> HttpResponse:
     task.save()
     return redirect('todo_app:index')
 
+
+class TagCreateView(generic.CreateView):
+    model = Tag
+    fields = '__all__'
+    success_url = reverse_lazy('todo_app:tags')
+    template_name = ('todo_app/tag_create.html')
+
+class TagUpdateView(generic.UpdateView):
+    model = Tag
+    fields = '__all__'
+    success_url = reverse_lazy('todo_app:tags')
+    template_name = ('todo_app/tag_update.html')
+
+
+class TagDeleteView(generic.DeleteView):
+    model = Tag
+    fields = '__all__'
+    success_url = reverse_lazy('todo_app:tags')
+    template_name = ('todo_app/tag_delete.html')
