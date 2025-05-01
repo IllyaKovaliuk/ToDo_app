@@ -3,6 +3,7 @@
 
 {% block content %}
   <h1>TODO List <a style="float: right; margin: 15px" href="{% url 'todo_app:task_create' %}" class="btn btn-primary">Create</a></h1>
+  <br>
 <ul>
     {% for task in num_tasks %}
         <li>
