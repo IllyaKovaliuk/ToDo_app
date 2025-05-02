@@ -6,8 +6,6 @@ from django.views import generic
 from todo_app.models import Task, Tag
 
 
-# Create your views here.
-
 def index(request: HttpRequest) -> HttpResponse:
     num_tasks = Task.objects.prefetch_related('tags').all()
     context = {
