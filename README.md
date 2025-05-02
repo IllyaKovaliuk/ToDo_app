@@ -1,4 +1,5 @@
-ToDo_app
+# ToDo_app
+
 This project was created with Django Framework. Managing your tasks. Users cab create, remove, read information and delete tasks.
 
 Features:
